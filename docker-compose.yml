@@ -1,0 +1,82 @@
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx:stable-alpine
+    container_name: ${APP_NAME}_nginx
+    restart: unless-stopped
+    ports:
+      - 8000:80
+    links:
+      - php
+    volumes:
+      - ./backend:/var/www/backend
+      - ./frontend:/var/www/frontend
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+      # - vue
+      - postgres
+    networks:
+      system_network:
+        aliases:
+          - nginx_host
+
+  php:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: ${APP_NAME}_php
+    restart: unless-stopped
+    volumes:
+      - ./backend/:/var/www/backend
+    ports:
+      - 9001:9000
+    depends_on:
+      - postgres
+    networks:
+      system_network:
+        aliases:
+          - php_host
+
+  postgres:
+    image: postgres
+    container_name: ${APP_NAME}_postgres
+    restart: unless-stopped
+    ports:
+      - 5433:5432
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: globalstd
+      POSTGRES_HOST_AUTH_METHOD: 'trust'
+    networks:
+      system_network:
+        aliases:
+          - postgres_host
+
+  vue-dev:
+    build:
+      context: ./frontend
+      dockerfile: dev.Dockerfile
+    container_name: ${APP_NAME}_vue_dev
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./frontend/:/var/www/frontend
+      - ~/.composer-docker/cache:/root/.composer/cache:delegated
+      - ./:/usr/src/app:cached
+    ports:
+      - 8080:8080
+    networks:
+      system_network:
+        aliases:
+          - vue_host
+networks:
+  system_network:
+    name: system_network
+    driver: bridge
+    ipam:
+      driver: default
