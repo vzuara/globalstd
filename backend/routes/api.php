@@ -3,6 +3,11 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\MovieController;
+use App\Http\Controllers\TurnController;
+use App\Http\Controllers\AssignmentController;
+use App\Http\Controllers\AuthController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,11 +18,30 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-Route::get('/', function () {
-    return response()->json(['msg' => 'working']);
+Route::middleware('auth:sanctum')->group(function() {
+    Route::prefix('movies')->group(function () {
+        Route::get('/', [MovieController::class, 'index']);
+        Route::get('/{id}', [MovieController::class, 'show']);
+        Route::post('/', [MovieController::class, 'store']);
+        Route::put('/{id}', [MovieController::class, 'update']);
+        Route::delete('/{id}', [MovieController::class, 'delete']);
+    });
+    
+    Route::prefix('turns')->group(function () {
+        Route::get('/', [TurnController::class, 'index']);
+        Route::get('/{id}', [TurnController::class, 'show']);
+        Route::post('/', [TurnController::class, 'store']);
+        Route::put('/{id}', [TurnController::class, 'update']);
+        Route::delete('/{id}', [TurnController::class, 'delete']);
+    });
+    
+    Route::prefix('assignments')->group(function () {
+        Route::post('/', [AssignmentController::class, 'store']);
+    });
 });
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::get('unauthorized', function () {
+    return response()->json(['error' => 'Unauthorized.'], 401);
+})->name('unauthorized');
