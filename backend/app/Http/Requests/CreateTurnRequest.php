@@ -26,7 +26,7 @@ class CreateTurnRequest extends FormRequest
         return [
             'turn' => [
                 'required',
-                'date_format:h:m',
+                'date_format:H:i',
                 'unique:turns'
             ],
             'status' => [

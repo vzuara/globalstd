@@ -11,10 +11,42 @@ use App\Http\Requests\UpdateTurnRequest;
 class TurnService
 {
 
-  public function getTurns(): array
+  public function getTurns(Request $request): array
   {
-    $turns = Turn::all();
-    return $turns->toArray();
+    $queries = $request->input('query');
+		$limit = $request->input('limit');
+		$ascending = $request->input('ascending');
+		$page = $request->input('page');
+		$orderBy = $request->input('orderBy');
+
+			$data = Turn::with('movies');
+
+		if (isset($queries) && $queries) {
+			foreach(json_decode($queries) as $field => $query) {
+				$data->where($field, 'LIKE', '%' . $query . '%');
+			};
+		}
+
+		$count = $data->count();
+		
+		if (isset($limit) && $limit) {
+						$data->limit($limit)->skip($limit * ($page - 1));
+				}
+				
+		if (isset($orderBy)) {
+			$direction = $ascending == 1 ? 'ASC' : 'DESC';
+		} else {
+      $direction = 'ASC';
+      $orderBy = 'id';
+    }
+    $data->orderBy($orderBy, $direction);
+		
+    $results = $data->get()->toArray();
+
+		return [
+			'data'	=> $results,
+			'count' => $count
+		];
   }
 
   public function getTurn(int $id): ?Turn
@@ -49,9 +81,8 @@ class TurnService
     return $turn;
   }
 
-  public function deleteTurn(int $id): bool
+  public function deleteTurn(int $id)
   {
-    
     try {
       $turn = Turn::findOrFail($id);
       $turn->delete();      

@@ -13,10 +13,10 @@ class Turn extends Model
 
     protected $fillable = ['turn', 'status'];
     protected $hidden = ['created_at', 'updated_at'];
-    protected $casts = ['turn' => 'datetime:H:i:s', 'status' => 'boolean'];
+    protected $casts = ['turn' => 'datetime:H:i', 'status' => 'boolean'];
 
     public function movies()
     {
-        return $this->belongsToMany(Movie::class, 'movie_turn');
+        return $this->belongsToMany(Movie::class, 'movie_turn')->withPivot('itinerary');
     }
 }

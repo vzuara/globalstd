@@ -7,6 +7,7 @@ use App\Models\Turn;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use App\Http\Requests\AssignmentRequest;
+use App\Http\Requests\AssignmentDeleteRequest;
 
 class AssignmentService
 {
@@ -19,7 +20,21 @@ class AssignmentService
     
     try {
       $movie = Movie::find($movie_id);
-      $movie->turns()->syncWithPivotValues($turn_ids, ['itinerary' => $itinerary]);
+      $movie->turns()->attach($turn_ids, ['itinerary' => $itinerary]);
+    } catch(\Throwable $th) {
+      return false;
+    };
+
+    return true;
+  }
+
+  public function deleteAssignment(AssignmentDeleteRequest $request, int $id): bool
+  {
+    $turn_id = $request->input('turn_id');
+    
+    try {
+      $movie = Movie::find($id);
+      $movie->turns()->detach($turn_id);
     } catch(\Throwable $th) {
       return false;
     };

@@ -18,10 +18,10 @@ class MovieController extends Controller
         $this->movieService = $movieService;
     }
 
-    public function index(): JsonResponse
+    public function index(Request $request): JsonResponse
     {
-        $movies = $this->movieService->getMovies();
-        return response()->json(['movies' => $movies]);
+        $movies = $this->movieService->getMovies($request);
+        return response()->json($movies);
     }
 
     public function show(int $id): JsonResponse

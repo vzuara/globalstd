@@ -17,10 +17,10 @@ class TurnController extends Controller
         $this->turnService = $turnService;
     }
 
-    public function index(): JsonResponse
+    public function index(Request $request): JsonResponse
     {
-        $turns = $this->turnService->getTurns();
-        return response()->json(['turns' => $turns]);
+        $turns = $this->turnService->getTurns($request);
+        return response()->json($turns);
     }
 
     public function show(int $id): JsonResponse
@@ -55,9 +55,8 @@ class TurnController extends Controller
 
     public function delete(int $id): JsonResponse
     {
-        $response = $this->turnService->deleteturn($id);
-
-        if (!$response) {
+        $response = $this->turnService->deleteTurn($id);
+        if (!$response === true) {
             return response()->json(['msg' => 'turn not exist'], 404);
         }
         return response()->json(['msg' => 'ok']);

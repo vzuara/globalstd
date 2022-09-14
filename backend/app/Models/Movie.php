@@ -17,6 +17,6 @@ class Movie extends Model
 
     public function turns()
     {
-        return $this->belongsToMany(Turn::class, 'movie_turn');
+        return $this->belongsToMany(Turn::class, 'movie_turn')->withPivot('itinerary');
     }
 }

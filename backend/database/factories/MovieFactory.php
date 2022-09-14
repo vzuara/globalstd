@@ -20,7 +20,6 @@ class MovieFactory extends Factory
             'name' => fake()->name(),
             'published_at' => fake()->dateTime(),
             'status' => fake()->boolean(),
-            'image' => fake()->imageUrl(640, 480, 'animals', true),
         ];
     }
 }

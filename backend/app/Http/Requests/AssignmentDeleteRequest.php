@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class UpdateTurnRequest extends FormRequest
+class AssignmentDeleteRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,15 +25,11 @@ class UpdateTurnRequest extends FormRequest
     public function rules()
     {
         return [
-            'turn' => [
+            'turn_id' => [
                 'required',
-                'date_format:H:i',
-                Rule::unique('turns')->ignore($this->id)
-            ],
-            'status' => [
-                'required',
-                'boolean'
-            ],
+                'integer',
+                Rule::exists('turns', 'id')
+            ]
         ];
     }
 }

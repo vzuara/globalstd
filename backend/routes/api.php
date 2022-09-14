@@ -37,6 +37,7 @@ Route::middleware('auth:sanctum')->group(function() {
     
     Route::prefix('assignments')->group(function () {
         Route::post('/', [AssignmentController::class, 'store']);
+        Route::put('/{id}', [AssignmentController::class, 'delete']);
     });
 });
 
