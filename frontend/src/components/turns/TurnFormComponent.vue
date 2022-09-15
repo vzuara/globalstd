@@ -51,6 +51,7 @@
               rounded
               small
               color="primary"
+              data-cy="saveBtn"
             >
               <v-icon dark class="mr-2"> mdi-content-save </v-icon> Guardar
             </v-btn>
@@ -97,7 +98,7 @@ export default {
       return this.$route.query.id;
     },
     title() {
-      return this.itemId ? 'Editar' : 'Agregar ';
+      return this.itemId ? 'Editar' : 'Agregar';
     },
     mode() {
       return this.itemId ? 'update' : 'create';

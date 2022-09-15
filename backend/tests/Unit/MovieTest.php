@@ -11,6 +11,7 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 
 use App\Http\Requests\CreateMovieRequest;
 use App\Http\Requests\UpdateMovieRequest;
+use Illuminate\Http\Request;
 
 use App\Services\MovieService;
 
@@ -24,9 +25,14 @@ class MovieTest extends TestCase
         $movieService = new MovieService();
         Movie::factory()->count(5)->create();
 
-        $movies = $movieService->getMovies();
+        $request = new Request();
+
+        $movies = $movieService->getMovies($request);
         
-        $this->assertCount(5, $movies);
+        $this->assertArrayHasKey('count', $movies);
+        $this->assertArrayHasKey('data', $movies);
+        $this->assertCount(5, $movies['data']);
+        $this->assertEquals(5, $movies['count']);
     }
 
     public function test_should_show_a_movie()

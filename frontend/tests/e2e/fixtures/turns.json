@@ -1,0 +1,102 @@
+{
+  "data": [
+    {
+      "id": 10,
+      "turn": "03:15",
+      "status": true,
+      "movies": [
+        {
+          "id": 1,
+          "name": "Harry Potter",
+          "published_at": "2022-05-07",
+          "status": true,
+          "image": "public/images/fjJhgKeKhur7Hf0lVYHgspAo3Yan4ots8Rta2Ebb.jpg",
+          "pivot": {
+            "turn_id": 10,
+            "movie_id": 1,
+            "itinerary": "2022-09-15"
+          }
+        },
+        {
+          "id": 1,
+          "name": "Harry Potter",
+          "published_at": "2022-05-07",
+          "status": true,
+          "image": "public/images/fjJhgKeKhur7Hf0lVYHgspAo3Yan4ots8Rta2Ebb.jpg",
+          "pivot": {
+            "turn_id": 10,
+            "movie_id": 1,
+            "itinerary": "2022-09-14"
+          }
+        },
+        {
+          "id": 1,
+          "name": "Harry Potter",
+          "published_at": "2022-05-07",
+          "status": true,
+          "image": "public/images/fjJhgKeKhur7Hf0lVYHgspAo3Yan4ots8Rta2Ebb.jpg",
+          "pivot": {
+            "turn_id": 10,
+            "movie_id": 1,
+            "itinerary": "2022-09-17"
+          }
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "turn": "01:05",
+      "status": true,
+      "movies": []
+    },
+    {
+      "id": 12,
+      "turn": "00:00",
+      "status": true,
+      "movies": []
+    },
+    {
+      "id": 13,
+      "turn": "22:10",
+      "status": true,
+      "movies": []
+    },
+    {
+      "id": 14,
+      "turn": "10:54",
+      "status": true,
+      "movies": []
+    },
+    {
+      "id": 15,
+      "turn": "20:05",
+      "status": true,
+      "movies": []
+    },
+    {
+      "id": 16,
+      "turn": "07:26",
+      "status": false,
+      "movies": []
+    },
+    {
+      "id": 17,
+      "turn": "14:08",
+      "status": true,
+      "movies": []
+    },
+    {
+      "id": 18,
+      "turn": "04:43",
+      "status": false,
+      "movies": []
+    },
+    {
+      "id": 19,
+      "turn": "02:27",
+      "status": true,
+      "movies": []
+    }
+  ],
+  "count": 18
+}

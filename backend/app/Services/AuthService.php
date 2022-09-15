@@ -15,10 +15,11 @@ class AuthService
 
   public function login(LoginRequest $request): ?array
   {
+    
     try {
       $user = User::where('email', $request->input('email'))->first();
       
-      if (!$user && !Hash::check($request->input('password'), $user->password)) {
+      if (!$user || !Hash::check($request->input('password'), $user->password)) {
         return null;
       }
       $token = $user->createToken(Str::random(40))->plainTextToken;

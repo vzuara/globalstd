@@ -11,6 +11,7 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 
 use App\Http\Requests\CreateTurnRequest;
 use App\Http\Requests\UpdateTurnRequest;
+use Illuminate\Http\Request;
 
 use App\Services\TurnService;
 
@@ -24,9 +25,14 @@ class TurnTest extends TestCase
         $turnService = new TurnService();
         Turn::factory()->count(5)->create();
 
-        $turns = $turnService->getTurns();
+        $request = new Request();
+
+        $turns = $turnService->getTurns($request);
         
-        $this->assertCount(5, $turns);
+        $this->assertArrayHasKey('count', $turns);
+        $this->assertArrayHasKey('data', $turns);
+        $this->assertCount(5, $turns['data']);
+        $this->assertEquals(5, $turns['count']);
     }
 
     public function test_should_show_a_turn()

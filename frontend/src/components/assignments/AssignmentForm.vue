@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-data-table
-      id="beersTable"
+      id="turnsTable"
       v-model="selected"
       show-select
       :headers="headers"

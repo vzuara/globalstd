@@ -1,0 +1,116 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "Harry Potter",
+      "published_at": "2022-05-07",
+      "status": true,
+      "image": "public/images/fjJhgKeKhur7Hf0lVYHgspAo3Yan4ots8Rta2Ebb.jpg",
+      "turns": [
+        {
+          "id": 10,
+          "turn": "03:15",
+          "status": true,
+          "pivot": {
+            "movie_id": 1,
+            "turn_id": 10,
+            "itinerary": "2022-09-17"
+          }
+        },
+        {
+          "id": 10,
+          "turn": "03:15",
+          "status": true,
+          "pivot": {
+            "movie_id": 1,
+            "turn_id": 10,
+            "itinerary": "2022-09-14"
+          }
+        },
+        {
+          "id": 10,
+          "turn": "03:15",
+          "status": true,
+          "pivot": {
+            "movie_id": 1,
+            "turn_id": 10,
+            "itinerary": "2022-09-15"
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Dejon Swift editado 123",
+      "published_at": "2018-11-30",
+      "status": true,
+      "image": null,
+      "turns": []
+    },
+    {
+      "id": 4,
+      "name": "Prof. Richmond Schimmel DDS",
+      "published_at": "1988-05-14",
+      "status": true,
+      "image": null,
+      "turns": []
+    },
+    {
+      "id": 5,
+      "name": "Tevin Kozey",
+      "published_at": "1985-09-05",
+      "status": false,
+      "image": null,
+      "turns": []
+    },
+    {
+      "id": 6,
+      "name": "Aileen Kohler",
+      "published_at": "2011-09-05",
+      "status": false,
+      "image": null,
+      "turns": []
+    },
+    {
+      "id": 7,
+      "name": "Edwardo Kunde",
+      "published_at": "2000-10-25",
+      "status": true,
+      "image": null,
+      "turns": []
+    },
+    {
+      "id": 8,
+      "name": "Winnifred Yundt",
+      "published_at": "2019-11-09",
+      "status": false,
+      "image": null,
+      "turns": []
+    },
+    {
+      "id": 9,
+      "name": "Mrs. Kallie Littel",
+      "published_at": "2013-02-16",
+      "status": true,
+      "image": null,
+      "turns": []
+    },
+    {
+      "id": 10,
+      "name": "Sarina Grady",
+      "published_at": "2003-01-19",
+      "status": true,
+      "image": null,
+      "turns": []
+    },
+    {
+      "id": 12,
+      "name": "Kaia Schumm",
+      "published_at": "1979-09-13",
+      "status": false,
+      "image": null,
+      "turns": []
+    }
+  ],
+  "count": 28
+}

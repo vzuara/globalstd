@@ -1,7 +1,8 @@
 <template>
   <v-card>
     <v-card-title
-      >Películas <v-spacer></v-spacer>
+      >Películas
+      <v-spacer></v-spacer>
 
       <v-btn
         elevation="0"
@@ -11,12 +12,13 @@
         rounded
         small
         color="primary"
+        data-cy="addBtn"
       >
         <v-icon dark class="mr-2"> mdi-plus </v-icon> Nueva Película
       </v-btn></v-card-title
     >
     <v-data-table
-      id="beersTable"
+      id="moviesTable"
       :headers="headers"
       :items="movies"
       :options.sync="options"
@@ -47,6 +49,7 @@
           :color="'primary'"
           :icon="'mdi-pencil'"
           :tooltip="'Editar'"
+          :className="'editBtn'"
         />
 
         <ActionButton
@@ -54,6 +57,7 @@
           :color="'primary'"
           :icon="'mdi-menu'"
           :tooltip="'Asignar turnos'"
+          :className="'assignBtn'"
         />
 
         <ActionButton :color="'secondary'" :icon="'mdi-lock'" :tooltip="''" />
@@ -62,6 +66,7 @@
           :color="'error'"
           :icon="'mdi-delete'"
           :tooltip="'Eliminar'"
+          :className="'deleteBtn'"
         />
       </template> </v-data-table
   ></v-card>

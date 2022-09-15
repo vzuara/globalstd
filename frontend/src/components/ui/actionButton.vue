@@ -9,6 +9,7 @@
         small
         v-on="on"
         :color="color"
+        :class="className"
       >
         <v-icon dark class="mr-2"> {{ icon }} </v-icon>
       </v-btn>
@@ -31,6 +32,9 @@ export default {
     },
     tooltip: {
       required: true,
+      type: String,
+    },
+    className: {
       type: String,
     },
   },

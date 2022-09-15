@@ -8,6 +8,7 @@
         src="./../../assets/logo.png"
         transition="scale-transition"
         width="150"
+        data-cy="logo"
       />
     </v-card-title>
     <v-card-text>
@@ -17,6 +18,7 @@
         :error-messages="emailErrors"
         @input="$v.email.$touch()"
         @blur="$v.email.$touch()"
+        data-cy="emailInput"
       />
       <v-text-field
         label="Contraseña"
@@ -25,6 +27,7 @@
         :error-messages="passwordErrors"
         @input="$v.password.$touch()"
         @blur="$v.password.$touch()"
+        data-cy="passwordInput"
       />
     </v-card-text>
     <v-card-actions>
@@ -36,6 +39,7 @@
         rounded
         small
         color="primary"
+        data-cy="loginBtn"
       >
         Login
       </v-btn>
@@ -51,8 +55,8 @@ export default {
   name: 'LoginComponent',
   mixins: [validationMixin],
   data: () => ({
-    email: 'test@example.com',
-    password: 'password',
+    email: '',
+    password: '',
   }),
   validations: {
     email: {
@@ -66,16 +70,13 @@ export default {
   },
   methods: {
     ...mapActions(['sendLogin']),
-    async login() {
+    login() {
       this.$v.$touch();
       if (!this.$v.$invalid) {
-        const response = await this.sendLogin({
+        this.sendLogin({
           email: this.email,
           password: this.password,
         });
-        if (response) {
-          this.$router.push('/admin');
-        }
       }
     },
   },

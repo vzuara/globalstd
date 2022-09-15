@@ -1,6 +1,6 @@
 <template>
   <v-data-table
-    id="beersTable"
+    id="turnAssignedTable"
     :headers="headers"
     :items="turns"
     :item-key="`id-${Date.now()}`"

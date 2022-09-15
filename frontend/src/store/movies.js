@@ -37,7 +37,7 @@ export const moviesModule = {
         state.commit('setItems', data.data);
         state.commit('setTotalItems', data.count);
       } catch (error) {
-        alert(error.response.data.message);
+        Swal.fire('Error', error.response.data.message, 'error');
       }
     },
     async getMovie(state, id) {

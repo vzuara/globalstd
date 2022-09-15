@@ -12,12 +12,13 @@
         rounded
         small
         color="primary"
+        data-cy="addBtn"
       >
         <v-icon dark class="mr-2"> mdi-plus </v-icon> Nuevo Turno
       </v-btn>
     </v-card-title>
     <v-data-table
-      id="beersTable"
+      id="turnsTable"
       :headers="headers"
       :items="turns"
       :options.sync="options"
@@ -35,6 +36,7 @@
           :color="'primary'"
           :icon="'mdi-pencil'"
           :tooltip="'Editar'"
+          :className="'editBtn'"
         />
 
         <ActionButton :color="'secondary'" :icon="'mdi-lock'" :tooltip="''" />
@@ -43,6 +45,7 @@
           :color="'error'"
           :icon="'mdi-delete'"
           :tooltip="'Eliminar'"
+          :className="'deleteBtn'"
         />
       </template> </v-data-table
   ></v-card>

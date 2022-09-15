@@ -11,6 +11,7 @@
               :error-messages="nameErrors"
               @input="$v.item.name.$touch()"
               @blur="$v.item.name.$touch()"
+              data-cy="nameInput"
             ></v-text-field>
           </v-col>
         </v-row>
@@ -64,6 +65,7 @@
               rounded
               small
               color="primary"
+              data-cy="saveBtn"
             >
               <v-icon dark class="mr-2"> mdi-content-save </v-icon> Guardar
             </v-btn>

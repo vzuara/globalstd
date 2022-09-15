@@ -1,4 +1,6 @@
 import axios from 'axios';
+import Swal from 'sweetalert2';
+import { router } from './../router';
 
 export const authModule = {
   state: {
@@ -31,9 +33,13 @@ export const authModule = {
         state.commit('setUser', data.user);
         localStorage.setItem('token', data.token);
         localStorage.setItem('user', JSON.stringify(data.user));
-        return true;
+        router.push({ name: 'Dashboard' });
       } catch (error) {
-        alert(error.response.data.message);
+        Swal.fire(
+          'Error',
+          'Sus datos son incorrectos favor de verificar',
+          'error'
+        );
       }
     },
   },
